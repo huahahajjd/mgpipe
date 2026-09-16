@@ -1,7 +1,7 @@
 """Read MAT model dimensions without materializing model annotations."""
 from pathlib import Path
 import struct, zlib, json, os, time, concurrent.futures
-BASE=Path('/mnt/nfs/wangchao/my_course/untreated_MS/replace_data/step4_modeling/predict_microbe_contributions')
+BASE=Path('/*/predict_microbe_contributions')
 OUT=BASE/'refactor_20260914'/'model_dimensions_v5.json'
 class Stream:
  def __init__(self,iterator):self.it=iter(iterator);self.buf=b'';self.pos=0
