@@ -1,5 +1,5 @@
 function records=census_hdf()
-base='/mnt/nfs/wangchao/my_course/untreated_MS/replace_data/step4_modeling/predict_microbe_contributions';
+base='/*/predict_microbe_contributions';
 files=dir(fullfile(base,'run_20260507_204155','ordered_models','*.mat'));records={};
 for i=1:numel(files)
     path=fullfile(files(i).folder,files(i).name);fid=fopen(path,'r');head=char(fread(fid,128,'*uint8')');fclose(fid);
