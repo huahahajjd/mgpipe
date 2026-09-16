@@ -18,20 +18,12 @@
 
 CPLEX 状态 5 会记录原始消息，并对该块使用数值精度强调、替代缩放重新构建 LP 求解一次（保留块内基复用）。网络约束及容差不放宽；重试仍不满足最优状态就保留失败及断点，不填零、不标为完成。其他类型错误不会无限重试。成功结果全部完成后才导出全体 CSV；有失败则保留逐样本结果和失败清单，重跑时只调度未完成样本。
 
-## 数据保存与旧结果迁移
 
-旧任务在 2026-09-15 13:54:27（服务器时间）停止，退出码 -2。停止前备份 135 个 MAT 文件及样本日志至：
-
-`/mnt/nfs/wangchao/my_course/untreated_MS/replace_data/step4_modeling/predict_microbe_contributions/stop_checkpoints/20260915_135401`
-
-新结果目录为 `run_reference_rolling_20260915`。旧目录 `run_refactored_8` 保留，用于验证同一源模型、原目标比例和旧 checkpoint key 后迁移：完整结果取目标交集；部分结果仅迁移完成标志为 true 的目标。新范围已全部算完的样本直接标为完成，其余保留部分进度。原恢复结果继续保留 origin=recovered、未知原求解状态码的说明。
-
-缓存仍共用 `lean_model_cache_v1`。原始样本模型不覆盖。
 
 ## 运行
 
 ```matlab
-base='/mnt/nfs/wangchao/my_course/untreated_MS/replace_data/step4_modeling/predict_microbe_contributions';
+base='/*/predict_microbe_contributions';
 addpath(base);
 summary=run_predict_microbe_contributions_v3();
 ```
